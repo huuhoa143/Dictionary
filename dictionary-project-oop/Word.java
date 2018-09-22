@@ -16,8 +16,8 @@ public class Word {
     }
 
     public void print() {
-        //System.out.println("Tu dien Anh -Viet");
-        System.out.println(DictionaryMangement.dictMange.index + "   |" + word_target + "           |" + word_explain);
+        System.out.println("No  |English    |Vietnames");
+        System.out.println(DictionaryMangement.dictMange.index + "   |" + word_target + "       |" + word_explain);
         DictionaryMangement.dictMange.index += 1;
     }
 }
