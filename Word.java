@@ -15,9 +15,12 @@ public class Word {
         this.word_explain = word_explain;
     }
 
+    public Word() {
+
+    }
+
     public void print() {
-        //System.out.println("Tu dien Anh -Viet");
-        System.out.println(DictionaryMangement.dictMange.index + "   |" + word_target + "           |" + word_explain);
+        System.out.println(DictionaryMangement.dictMange.index + "\t|" + word_target + "\t|" + word_explain);
         DictionaryMangement.dictMange.index += 1;
     }
 }
