@@ -6,4 +6,5 @@ public class main {
         // DictionaryCommandline.dictionaryAdvanced();
         DictionaryCommandline.dictionarySeacher();
     }
+
 }
