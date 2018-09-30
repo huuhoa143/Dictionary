@@ -16,11 +16,10 @@ public class DictionaryMangement {
 
     }
 
-    public static void insetFromFile() {
+    public static void insetFromFile(){
         try {
             File fileName = new File("dictionaries.txt");
             Scanner input = new Scanner(fileName);
-
             while (input.hasNextLine()) {
                 String word1 = input.next();
                 String word2 = input.nextLine();
@@ -69,4 +68,8 @@ public class DictionaryMangement {
         }
 
     }
+    public  void dictionaryExportToFile() {
+        
+    }
+
 }

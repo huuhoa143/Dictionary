@@ -5,7 +5,7 @@ public class DictionaryCommandline {
     public static DictionaryCommandline dictCommand = new DictionaryCommandline();
 
     public void showAllWord() {
-        System.out.println("No  |English        |Vietnames");
+        System.out.println("No        |English              |Vietnames");
         Dictionary.dict.listWord.forEach(word -> word.print());
 
     }

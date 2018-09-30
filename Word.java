@@ -20,7 +20,7 @@ public class Word {
     }
 
     public void print() {
-        System.out.println(DictionaryMangement.dictMange.index + "\t|" + word_target + "\t|" + word_explain);
+        System.out.printf("%-10d| %-20s| %s\n", DictionaryMangement.dictMange.index, word_target, word_explain);
         DictionaryMangement.dictMange.index += 1;
     }
 }
