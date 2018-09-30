@@ -14,10 +14,9 @@ public class DictionaryMangement {
         String ipExplain = ip.nextLine();
         Dictionary.dict.listWord.add(new Word(ipEnglish, ipExplain));
 
-<<<<<<< HEAD
     }
 
-    public static void insetFromFile(){
+    public static void insertFromFile(){
         try {
             File fileName = new File("dictionaries.txt");
             Scanner input = new Scanner(fileName);
@@ -69,63 +68,12 @@ public class DictionaryMangement {
         }
 
     }
-    public  void dictionaryExportToFile() {
-        
-=======
-    }
-
-    public static void insetFromFile() {
-        try {
-            File fileName = new File("dictionaries.txt");
-            Scanner input = new Scanner(fileName);
-
-            while (input.hasNextLine()) {
-                String word1 = input.next();
-                String word2 = input.nextLine();
-                Dictionary.dict.listWord.add(new Word(word1, word2.trim()));
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public static Word getFilterOutput(ArrayList<Word> words, String filter) {
-        Word indexx = new Word();
-        for (Word tu : words) {
-            if (tu.getWord().equals(filter)) {
-                indexx = tu;
-            }
-        }
-        return indexx;
->>>>>>> 0488f608e0d102f405a4fad7515ee63d48eda104
-    }
-
-    public List<String> getWordOutput(ArrayList<Word> words, String tra) {
-        List<String> foundWord = new ArrayList<>();
-        for (Word tu : words) {
-            if (tu.getWord().startsWith(tra)) {
-                foundWord.add(tu.getWord());
-            }
-        }
-
-        return foundWord;
-    }
-
-    public static void dictionaryLockup() {
-
+    public  void removeWord() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Nhap tu ban muon tra cuu: ");
-        String wordLookup = input.next();
-        System.out.println(getFilterOutput(Dictionary.dict.listWord, wordLookup).getExplain());
+        System.out.print("Nhap tu ban muon xoa: ");
+        String wordDelete = input.next();
+        Word w = getFilterOutput(Dictionary.dict.listWord, wordDelete);
+        Dictionary.dict.listWord.remove(w);
     }
 
-    public void dictionaryFind() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Nhap tu ban muon tim kiem: ");
-        String wordFind = input.next();
-        for (String word : getWordOutput(Dictionary.dict.listWord, wordFind)) {
-            System.out.println(word);
-        }
-
-    }
 }
