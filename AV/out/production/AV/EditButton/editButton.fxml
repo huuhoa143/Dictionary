@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditButton.EditButtonController">
+   <children>
+      <JFXButton fx:id="buttonEdit" contentDisplay="GRAPHIC_ONLY" layoutX="174.0" layoutY="195.0" onAction="#editButton" prefHeight="40.0" prefWidth="40.0" stylesheets="@../sample/dark-theme.css">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/auto-fix%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <VBox layoutX="53.0" prefHeight="180.0" prefWidth="300.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="400.0" text="Nhập từ bạn muốn sửa" />
+            <JFXTextField fx:id="wordTarget" prefHeight="40.0" prefWidth="400.0" />
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="400.0" text="Nhập nghĩa của từ đó" />
+            <JFXTextField fx:id="wordExplain" prefHeight="40.0" prefWidth="400.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

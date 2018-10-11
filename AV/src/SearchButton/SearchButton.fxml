@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchButton.SearchButtonController">
+   <children>
+      <VBox layoutX="85.0" prefHeight="80.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" text="Nhập từ bạn muốn tra cứu" />
+            <JFXTextField fx:id="textField" prefHeight="30.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <JFXButton fx:id="button" contentDisplay="GRAPHIC_ONLY" layoutX="156.0" layoutY="109.0" onAction="#searchButton" prefHeight="40.0" prefWidth="40.0" stylesheets="@../sample/dark-theme.css">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/magnify.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label fx:id="wordFound" alignment="TOP_LEFT" layoutY="200.0" prefHeight="100.0" prefWidth="400.0" />
+   </children>
+</AnchorPane>
