@@ -23,6 +23,7 @@ import java.util.TreeSet;
 
 public class DictionaryMangement {
     public static DictionaryMangement dictMange = new DictionaryMangement();
+    public ArrayList<Word> tempList = Dictionary.dict.listWord;
     /*
     public static void insertFromFile(){
         try {
@@ -39,13 +40,17 @@ public class DictionaryMangement {
     }*/
     public static boolean getFilterOutput(ArrayList<Word> words, String filter) {
         for (Word tu : words) {
-            if(tu.getWord().contains(filter)) {
+            //System.out.println(tu.getWord()+"\n");
+            if(tu.getWord().equals(filter)) {
                 return true;
             }
         }
         return false;
     }
 
+    public Boolean findWordInlist(String word) {
+        return Dictionary.dict.listWord.contains(new Word(word));
+    }
     public static String dictionaryLockup(String a) {
 
         //Scanner input = new Scanner(System.in);
@@ -53,7 +58,7 @@ public class DictionaryMangement {
         //String wordLookup = input.next();
         //System.out.println(getFilterOutput(Dictionary.dict.listWord, a).getExplain());
         if(getFilterOutput(Dictionary.dict.listWord, a)) {
-            return DictionaryMangement.dictMange.foundWord(Dictionary.dict.listWord, a);
+            return a;
         }
         return "No Word";
     }
@@ -99,13 +104,20 @@ public class DictionaryMangement {
         }
         return "No Word";
     }
-    public Boolean listHasWord(ArrayList<Word> words, String wordTra) {
+
+    /**
+     * Hàm kiểm tra xem từ wordTra có trong danh sách không
+     * @param words Danh sách từ
+     * @param wordTra từ tìm kiếm
+     * @return trả về 1 xâu
+     */
+    public String listHasWord(ArrayList<Word> words, String wordTra) {
         for(Word w : words) {
-            if(w.getWord().equals(wordTra)) {
-                return true;
+            if(w.getWord().startsWith(wordTra)) {
+                return w.getWord();
             }
         }
-        return false;
+        return "No Word";
     }
     public String foundSound(ArrayList<Word> words, String tra) {
         for(Word a: words) {
@@ -113,7 +125,7 @@ public class DictionaryMangement {
                 return a.getWordSound();
             }
         }
-        return "No Word";
+        return "No Sound";
     }
     public void dictionaryExportToFile(ArrayList<Word> words, String path) {
         try {
@@ -195,17 +207,6 @@ public class DictionaryMangement {
     }
 
     /**
-     * Hàm thêm từ
-     * @param wordTarget1 từ Tiếng Anh
-     * @param wordExplain1 từ Tiếng Việt
-     * @return Trả về 1 dãy Word sau khi thêm từ
-     */
-    public ArrayList<Word> AddWord(String wordTarget1, String wordExplain1) {
-        Dictionary.dict.listWord.add(new Word(wordTarget1, wordExplain1, ""));
-        return  Dictionary.dict.listWord;
-    }
-
-    /**
      * Hàm chuyển cảnh
      * @param url Địa chỉ
      * @param event Sự kiện
@@ -224,32 +225,42 @@ public class DictionaryMangement {
         }
     }
 
+    public Word SearchWord(String input) {
+        for(Word w : this.tempList) {
+            if(w.getWord().equals(input)) {
+                return w;
+            }
+        }
+        return null;
+    }
+    public int getWordPosition(Word word) {
+        return Dictionary.dict.listWord.indexOf(word);
+    }
     public ArrayList<Word> deleteWord(String word) {
-        ArrayList<Word> arr = new ArrayList<Word>();
-        String soundWord = DictionaryMangement.dictMange.foundSound(Dictionary.dict.listWord, word);
-        String wordExplain = DictionaryMangement.dictMange.foundWord(Dictionary.dict.listWord, word);
-        for(Word w : Dictionary.dict.listWord) {
-            if(!(w.equals(new Word(word, wordExplain, soundWord)))) {
-                arr.add(w);
-            }
-        }
-        Dictionary.dict.listWord = arr;
+       //this.tempList.remove(DictionaryMangement.dictMange.SearchWord(word));
+//       Dictionary.dict.listWord = this.tempList;
+        return this.tempList;
+    }
+    /**
+     * Hàm thêm từ
+     * @param wordTarget1 từ Tiếng Anh
+     * @param wordExplain1 từ Tiếng Việt
+     * @return Trả về 1 dãy Word sau khi thêm từ
+     */
+    public ArrayList<Word> AddWord(String wordTarget1, String wordExplain1) {
+        Dictionary.dict.listWord.add(new Word(wordTarget1, wordExplain1, ""));
+        return  Dictionary.dict.listWord;
+    }
+    /**
+     * Hàm sửa từ
+     * @param word từ Tiếng Anh
+     * @param explain từ Tiếng Việt
+     * @return Trả vê 1 dãy Word sau khi sửa từ
+     */
+    public ArrayList<Word> EditWord(String word, String explain) {
+        //Dictionary.dict.listWord.remove(new Word(word, explain));
+        Dictionary.dict.listWord.add(new Word(word, explain));
         return Dictionary.dict.listWord;
-    }
-    public void EditWord(ArrayList<Word>words, String word, String explain) {
-        for(Word w : words) {
-            if(w.getWord().equals(word)) {
-                w.setWord_explain(explain);
-            }
-        }
-        Dictionary.dict.listWord = words;
-    }
-    public String foundWordabc(ArrayList<Word> words, String tra) {
-        Word w = new Word(tra, DictionaryMangement.dictMange.foundWord(Dictionary.dict.listWord, tra), DictionaryMangement.dictMange.foundSound(Dictionary.dict.listWord, tra));
-        if(words.contains(w)) {
-            return w.getWord();
-        }
-        return "No Word";
     }
 
     /**

@@ -1,6 +1,6 @@
 package sample;
 
-public class Word {
+public class Word implements Comparable<Word>{
     private String word_target, word_explain;
     private String wordSound;
 
@@ -40,7 +40,19 @@ public class Word {
 
     }
 
+    public Word(String word_target) {
+        this.word_target = word_target;
+    }
+    public Word(String word_target, String word_explain) {
+        this.word_target = word_target;
+        this.word_explain = word_explain;
+    }
     public String toString() {
         return word_target + "\t" + word_explain;
+    }
+
+    @Override
+    public int compareTo(Word o) {
+        return this.getWord().compareToIgnoreCase(o.getWord());
     }
 }
