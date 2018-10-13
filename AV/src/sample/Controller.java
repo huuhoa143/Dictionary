@@ -203,8 +203,8 @@ public class Controller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About Information");
         alert.setHeaderText(null);
-        alert.setContentText("Nguyễn Hữu Hoà
-                              Phan Tất Phúc");
+        alert.setContentText("Nguyễn Hữu Hoà\n" + 
+                              "Phan Tất Phúc");
         alert.showAndWait();
     }
 
