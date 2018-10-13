@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import sample.Dictionary;
 import sample.DictionaryMangement;
@@ -25,13 +26,14 @@ public class DeleteButtonController implements Initializable {
 
     public void DeleteWord(ActionEvent event) {
         String wordDelete = textField.getText();
-        String wordFound = DictionaryMangement.dictMange.foundWordabc(Dictionary.dict.listWord,wordDelete);
-        System.out.println(wordFound);
-        System.out.println(wordDelete);
-        System.out.println(wordFound.equals("Khong co"));
-        Word w = new Word(wordDelete, DictionaryMangement.dictMange.foundWord(Dictionary.dict.listWord, wordDelete), DictionaryMangement.dictMange.foundSound(Dictionary.dict.listWord, wordDelete));
-
-        //Dictionary.dict.listWord = Dictionary.dict.listWord.re(w);
+        String foundWordDelete = DictionaryMangement.dictMange.listHasWord(Dictionary.dict.listWord, wordDelete);
+        if(foundWordDelete == "No Word") {
+            DictionaryMangement.dictMange.changeScene(getClass().getResource("/DeleteButtonExtends2/deleteButtonExtends2.fxml"), event);
+        }
+        else {
+             Dictionary.dict.listWord = DictionaryMangement.dictMange.deleteWord(wordDelete);
+            DictionaryMangement.dictMange.changeScene(getClass().getResource("/DeleteButtonExtends/deleteButtonExtend.fxml"), event);
+        }
 
     }
     @Override

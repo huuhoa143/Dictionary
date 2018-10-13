@@ -18,15 +18,15 @@ public class SearchButtonController implements Initializable {
     @FXML
     private JFXTextField textField;
     @FXML
+    private TextArea wordFound;
+    @FXML
     private JFXButton button;
-    @FXML
-    private Label wordFound;
-    @FXML
 
-    public void searchButton(ActionEvent event) {
-        String foundWord = new String(textField.getText());
-        System.out.println(DictionaryMangement.dictionaryLockup(foundWord));
-        if(DictionaryMangement.dictionaryLockup(foundWord).compareTo("No Word") == 0) {
+    public void searchButton() {
+        String text = textField.getText();
+        String foundWord = DictionaryMangement.dictMange.listHasWord(Dictionary.dict.listWord, text);
+
+        if(foundWord == "No Word") {
             wordFound.setText("No Word");
         } else {
             wordFound.setText((DictionaryMangement.dictMange.foundWord(Dictionary.dict.listWord, foundWord)));

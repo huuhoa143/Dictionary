@@ -61,8 +61,14 @@
                                                           <children>
                                                 <HBox prefHeight="40.0" prefWidth="350.0">
                                                    <children>
-                                                      <Label fx:id="labelWordFound" prefHeight="40.0" prefWidth="150.0" />
-                                                      <Label fx:id="labelWordSound" prefHeight="40.0" prefWidth="150.0" />
+                                                      <Label fx:id="labelWordFound" prefHeight="40.0" prefWidth="150.0" styleClass="wordFound">
+                                                         <font>
+                                                            <Font name="Comic Sans MS" size="13.0" />
+                                                         </font></Label>
+                                                      <Label fx:id="labelWordSound" prefHeight="40.0" prefWidth="150.0">
+                                                         <font>
+                                                            <Font name="Comic Sans MS" size="13.0" />
+                                                         </font></Label>
                                                       <JFXButton fx:id="buttonPronounce" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#clickForSound" prefHeight="30.0" prefWidth="30.0" styleClass="soundButton">
                                                          <graphic>
                                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -75,7 +81,10 @@
                                                    </children>
                                                 </HBox>
                                                 <Label fx:id="labelWordDefinition" prefHeight="40.0" prefWidth="350.0" />
-                                                <TextArea fx:id="labelWordExplain" prefHeight="320.0" prefWidth="350.0" />
+                                                <TextArea fx:id="labelWordExplain" prefHeight="320.0" prefWidth="350.0">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="13.0" />
+                                                   </font></TextArea>
                                                           </children>
                                                       </VBox>
                                                   </children>
