@@ -225,21 +225,18 @@ public class DictionaryMangement {
         }
     }
 
+    /**
+     * hàm tìm kiếm từ trong từ điển
+     * @param input từ cần tìm kiếm
+     * @return trả về 1 từ dạng Word
+     */
     public Word SearchWord(String input) {
-        for(Word w : this.tempList) {
-            if(w.getWord().equals(input)) {
+        for(Word w : Dictionary.dict.listWord) {
+            if(w.getWord().startsWith(input)) {
                 return w;
             }
         }
         return null;
-    }
-    public int getWordPosition(Word word) {
-        return Dictionary.dict.listWord.indexOf(word);
-    }
-    public ArrayList<Word> deleteWord(String word) {
-       //this.tempList.remove(DictionaryMangement.dictMange.SearchWord(word));
-//       Dictionary.dict.listWord = this.tempList;
-        return this.tempList;
     }
     /**
      * Hàm thêm từ
@@ -258,7 +255,8 @@ public class DictionaryMangement {
      * @return Trả vê 1 dãy Word sau khi sửa từ
      */
     public ArrayList<Word> EditWord(String word, String explain) {
-        //Dictionary.dict.listWord.remove(new Word(word, explain));
+        Word w = DictionaryMangement.dictMange.SearchWord(word);
+        Dictionary.dict.listWord.remove(Dictionary.dict.listWord.indexOf(w));
         Dictionary.dict.listWord.add(new Word(word, explain));
         return Dictionary.dict.listWord;
     }

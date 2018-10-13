@@ -1,6 +1,7 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import com.voicerss.tts.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -8,10 +9,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
@@ -51,6 +57,44 @@ public class Controller implements Initializable {
     private MenuItem editItem;
     @FXML
     private MenuItem aboutItem;
+
+    /**
+     * Cua so deleteWord
+     */
+    @FXML
+    JFXTextField textField;
+    @FXML
+    JFXButton buttonDelete;
+
+    /**
+     * Cua so addWord
+     */
+    @FXML
+    JFXTextField textFieldWord;
+    @FXML
+    JFXTextField textFieldExlain;
+    @FXML
+    JFXButton button;
+
+    /**
+     * Cua so searchWord
+     */
+    @FXML
+    private JFXTextField textFieldExtra;
+    @FXML
+    private TextArea wordFoundExtra;
+    @FXML
+    private JFXButton buttonExtra;
+
+    /**
+     * Cua so editWord
+     */
+    @FXML
+    JFXTextField wordTarget;
+    @FXML
+    JFXTextField wordExplain;
+    @FXML
+    JFXButton buttonEdit;
 
     /**
      * Hàm đưa ra các từ gợi ý sau khi nhập từ ở textField và listView
@@ -131,6 +175,7 @@ public class Controller implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if(!location.toExternalForm().endsWith("sample.fxml")) return;
         DictionaryMangement.dictMange.insertFromFiletest();
         ObservableList<String> list= FXCollections.observableArrayList(DictionaryMangement.dictMange.listWordTarget(Dictionary.dict.listWord));
         listViewMyWord.setItems(list);
@@ -160,5 +205,100 @@ public class Controller implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Nguyễn Hữu Hoà");
         alert.showAndWait();
+    }
+
+    /**
+     * Ham hien len cua so xoa tu
+     * @param event su kien
+     */
+    public void DeleteWord(ActionEvent event) {
+        String wordDelete = textField.getText();
+        String foundWordDelete = DictionaryMangement.dictMange.listHasWord(Dictionary.dict.listWord, wordDelete);
+        //System.out.println(foundWordDelete);
+        if(foundWordDelete == "No Word") {
+            DictionaryMangement.dictMange.changeScene(getClass().getResource("/DeleteButtonExtends2/deleteButtonExtends2.fxml"), event);
+        }
+        else {
+            //System.out.println(DictionaryMangement.dictMange.SearchWord(wordDelete));
+            Word w = DictionaryMangement.dictMange.SearchWord(wordDelete);
+            Dictionary.dict.listWord.remove(Dictionary.dict.listWord.indexOf(w));
+            DictionaryMangement.dictMange.changeScene(getClass().getResource("/DeleteButtonExtends/deleteButtonExtend.fxml"), event);
+        }
+
+    }
+
+    /**
+     * Ham hien len cua so them tu
+     * @param event
+     */
+    public void AddWord(ActionEvent event) {
+        String wordTarget = textFieldWord.getText();
+        String wordExplain = textFieldExlain.getText();
+        String foundWord = DictionaryMangement.dictMange.foundWord(Dictionary.dict.listWord, wordTarget);
+        if(foundWord == "No Word")
+        {
+            Dictionary.dict.listWord = DictionaryMangement.dictMange.AddWord(wordTarget, wordExplain);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Add Button");
+            alert.setHeaderText(null);
+            alert.setContentText("Bạn đã thêm từ thành công");
+            alert.showAndWait();
+        }
+        else {
+            try {
+                Parent parent = FXMLLoader.load(getClass().getResource("/SearchButtonExtends/searchButtonExtends.fxml"));
+                Scene scene = new Scene(parent);
+                Stage windowAlert = (Stage)((Node)event.getSource()).getScene().getWindow();
+                windowAlert.setScene(scene);
+                windowAlert.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e);
+            }
+        }
+    }
+
+    /**
+     * Ham hien len cua so tra tu
+     */
+    public void searchButton() {
+        String text = textFieldExtra.getText();
+        String foundWord = DictionaryMangement.dictMange.listHasWord(Dictionary.dict.listWord, text);
+
+        if(foundWord == "No Word") {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Search Button");
+            alert.setHeaderText(null);
+            alert.setContentText("Từ bạn muốn tìm kiếm không có trong từ điển mời bạn tra từ khác");
+            alert.showAndWait();
+            wordFoundExtra.setText("Bạn hãy tra từ khác");
+        } else {
+            wordFoundExtra.setText((DictionaryMangement.dictMange.foundWord(Dictionary.dict.listWord, foundWord)));
+        }
+    }
+
+    /**
+     * Ham hien len cua so sua tu
+     */
+    public void editButton() {
+        String targetText =wordTarget.getText();
+        String explainText = wordExplain.getText();
+        String foundWord = DictionaryMangement.dictMange.listHasWord(Dictionary.dict.listWord, targetText);
+
+        if(!foundWord.equals("No Word")) {
+            Dictionary.dict.listWord = DictionaryMangement.dictMange.EditWord(targetText, explainText);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Edit Button");
+            alert.setHeaderText(null);
+            alert.setContentText("Bạn đã sửa từ thành công");
+            alert.showAndWait();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Edit Button");
+            alert.setHeaderText(null);
+            alert.setContentText("Từ bạn nhập không có trong từ điển mời bạn nhập lại");
+            alert.showAndWait();
+        }
     }
 }
