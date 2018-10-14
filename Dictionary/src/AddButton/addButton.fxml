@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <VBox layoutX="18.0" prefHeight="300.0" prefWidth="300.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="300.0" text="Nhập từ bạn muốn thêm" />
+            <JFXTextField fx:id="textFieldWord" prefHeight="40.0" prefWidth="300.0" stylesheets="@../sample/dark-theme.css" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="300.0" text="Nghĩa của từ bạn thêm" />
+            <JFXTextField fx:id="textFieldExlain" prefHeight="40.0" prefWidth="300.0" stylesheets="@../sample/dark-theme.css" />
+         </children>
+      </VBox>
+      <JFXButton fx:id="button" contentDisplay="GRAPHIC_ONLY" layoutX="328.0" layoutY="115.0" mnemonicParsing="false" onAction="#AddWord" prefHeight="40.0" prefWidth="40.0" stylesheets="@../sample/dark-theme.css" text="Add">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/plus-circle-outline.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

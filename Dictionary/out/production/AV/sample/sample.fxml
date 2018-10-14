@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="550.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <BorderPane prefHeight="550.0" prefWidth="760.0">
+            <top>
+                <MenuBar prefHeight="50.0" prefWidth="760.0" stylesheets="@dark-theme.css" BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                        <MenuItem fx:id="searchItem" mnemonicParsing="false" onAction="#searchMenuItem" text="Search" />
+                        <MenuItem fx:id="addItem" mnemonicParsing="false" onAction="#addMenuItem" text="Add" />
+                                <MenuItem fx:id="deleteItem" mnemonicParsing="false" onAction="#deleteMenuItem" text="Delete" />
+                        <MenuItem fx:id="editItem" mnemonicParsing="false" onAction="#editMenuItem" text="Edit" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem fx:id="aboutItem" mnemonicParsing="false" onAction="#aboutMenuItem" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </top>
+            <center>
+            <AnchorPane>
+               <children>
+                      <JFXTabPane prefHeight="50.0" prefWidth="50.0" stylesheets="@dark-theme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                          <tabs>
+                              <Tab text="Search">
+                                  <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                              <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="260.0">
+                                                  <children>
+                                                      <VBox prefHeight="400.0" prefWidth="260.0">
+                                                          <children>
+                                                              <TextField fx:id="textFieldSearch" onKeyReleased="#listSuggetion" prefHeight="40.0" prefWidth="260.0" />
+                                                              <ListView fx:id="listView" onMouseClicked="#clickForInformationWord" prefHeight="360.0" prefWidth="200.0" />
+                                                          </children>
+                                                      </VBox>
+                                                  </children>
+                                              </AnchorPane>
+                                              <AnchorPane layoutX="286.0" layoutY="14.0" prefHeight="400.0" prefWidth="350.0">
+                                                  <children>
+                                                      <VBox prefHeight="400.0" prefWidth="350.0">
+                                                          <children>
+                                                <HBox prefHeight="40.0" prefWidth="350.0">
+                                                   <children>
+                                                      <Label fx:id="labelWordFound" prefHeight="40.0" prefWidth="150.0" styleClass="wordFound">
+                                                         <font>
+                                                            <Font name="Comic Sans MS" size="13.0" />
+                                                         </font></Label>
+                                                      <Label fx:id="labelWordSound" prefHeight="40.0" prefWidth="150.0">
+                                                         <font>
+                                                            <Font name="Comic Sans MS" size="13.0" />
+                                                         </font></Label>
+                                                      <JFXButton fx:id="buttonPronounce" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#clickForSound" prefHeight="30.0" prefWidth="30.0" styleClass="soundButton">
+                                                         <graphic>
+                                                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../Picture/speaker.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                      </JFXButton>
+                                                   </children>
+                                                </HBox>
+                                                <Label fx:id="labelWordDefinition" prefHeight="40.0" prefWidth="350.0" />
+                                                <TextArea fx:id="labelWordExplain" prefHeight="320.0" prefWidth="350.0">
+                                                   <font>
+                                                      <Font name="Comic Sans MS" size="13.0" />
+                                                   </font></TextArea>
+                                                          </children>
+                                                      </VBox>
+                                                  </children>
+                                              </AnchorPane>
+                                    <VBox layoutX="646.0" layoutY="14.0" prefHeight="400.0" prefWidth="100.0">
+                                       <children>
+                                          <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonSearch" prefHeight="100.0" prefWidth="100.0" styleClass="toolbar-button" text="Search">
+                                             <graphic>
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Picture/magnify.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonAdd" prefHeight="100.0" prefWidth="100.0" styleClass="toolbar-button" text="Add">
+                                             <graphic>
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Picture/plus-circle-outline.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonDelete" prefHeight="100.0" prefWidth="100.0" styleClass="toolbar-button" text="Delete">
+                                             <graphic>
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Picture/delete.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                          <JFXButton contentDisplay="TOP" mnemonicParsing="false" onAction="#handleButtonEdit" prefHeight="100.0" prefWidth="100.0" styleClass="toolbar-button" text="Edit">
+                                             <graphic>
+                                                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Picture/auto-fix%20(1).png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                          </children>
+                                      </AnchorPane>
+                                  </content>
+                              </Tab>
+                              <Tab text="My Word">
+                                  <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox layoutX="45.0" layoutY="14.0" prefHeight="400.0" prefWidth="670.0">
+                                       <children>
+                                          <ListView fx:id="listViewMyWord" prefHeight="400.0" prefWidth="670.0" />
+                                       </children></VBox>
+                                 </children></AnchorPane>
+                                  </content>
+                              </Tab>
+                          </tabs>
+                      </JFXTabPane>
+               </children>
+            </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>

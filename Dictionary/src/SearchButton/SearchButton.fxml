@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <VBox layoutX="85.0" prefHeight="80.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" text="Nhập từ bạn muốn tra cứu" />
+            <JFXTextField fx:id="textFieldExtra" prefHeight="30.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <TextArea fx:id="wordFoundExtra" layoutY="200.0" prefHeight="100.0" prefWidth="400.0" />
+      <JFXButton fx:id="buttonExtra" contentDisplay="GRAPHIC_ONLY" layoutX="154.0" layoutY="138.0" onMouseClicked="#searchButton" prefHeight="50.0" prefWidth="50.0" stylesheets="@../sample/dark-theme.css">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/magnify.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

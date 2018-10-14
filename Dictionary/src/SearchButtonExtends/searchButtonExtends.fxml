@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SearchButtonExtends.SearchButtonExtendController">
+   <children>
+      <JFXButton fx:id="backButton" contentDisplay="GRAPHIC_ONLY" layoutX="75.0" layoutY="206.0" onAction="#clickButtonBack" prefHeight="50.0" prefWidth="50.0" stylesheets="@../sample/dark-theme.css" text="Back">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/chevron-left-circle-outline.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="searchButton" contentDisplay="GRAPHIC_ONLY" layoutX="261.0" layoutY="206.0" onAction="#clickButtonSearch" prefHeight="50.0" prefWidth="50.0" stylesheets="@../sample/dark-theme.css" text="Search">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Picture/magnify.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="75.0" layoutY="55.0" prefHeight="95.0" prefWidth="269.0" stylesheets="@../sample/dark-theme.css" text="Từ bạn nhập đã có trong từ điển bạn có muốn nhập từ khác" wrapText="true" />
+   </children>
+</AnchorPane>
