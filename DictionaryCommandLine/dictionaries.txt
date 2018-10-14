@@ -1,0 +1,7 @@
+name    tên
+house   ngôi nhà
+pen cái bút
+computer    máy tính
+table   bàn
+tabel   abc
+tabol   cde
